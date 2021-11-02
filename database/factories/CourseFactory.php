@@ -24,10 +24,10 @@ class CourseFactory extends Factory
         return [
             'name' => $this->faker->jobTitle(),
             'description' => $this->faker->realText(100,2),
-            'image' => $this->faker->imageUrl(640,480),
-            'price' => $this->faker->randomFloat(4),
+            'image' => 'https://source.unsplash.com/650x300/?programing'.$this->faker->jobTitle(),
+            'price' => $this->faker->randomFloat(2, 50,200),
             'rate' => $this->faker->numberBetween(0,5),
-            'user_id' => '1',
+            'user_id' => $this->faker->numberBetween(1,5),
         ];
     }
 }

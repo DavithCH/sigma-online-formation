@@ -9,11 +9,11 @@
                 <h4 class="font-bold text-xl mb-2 ">{{$course->name}}</h4>
                 <p><span class="font-semibold">rate :</span> {{$course->rate}} <i class="fas fa-star text-yellow-500 "></i></p>
                 </div>
-                <img class="mb-2"  src="{{$course->image}}" alt="{{$course->name}}">
+                <img class="mb-2"  src="{{$course->image}}" alt="{{$course->image}}">
                 <div class="w-3/4">
                 <p class="mb-2">{{$course->description}}</p>
                 <div class="flex justify-between w-full">
-                    <p>Teacher : </p>
+                    <p>Teacher : {{$course->getUser->firstname}} {{$course->getUser->lastname}} </p>
                     <p>price : {{$course->price}} €</p>
                 </div>
             </div>
