@@ -18,11 +18,11 @@ class CreateCoursesCategoriesTable extends Migration
             $table->unsignedBigInteger('courses_id');
             $table->foreign('categories_id')->references('id')->on('categories');
             $table->foreign('courses_id')
-                  ->references('id')
-                  ->on('courses')
-                  ->constrained()
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
+                ->references('id')
+                ->on('courses')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

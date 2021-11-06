@@ -11,5 +11,6 @@
 </head>
 <body class="container mx-auto font-sans">
     @yield('content')
+    @yield('script')
 </body>
 </html>

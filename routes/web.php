@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [CourseController::class, 'index'])->name('courseList');
+Route::get('/{id}',[CourseController::class, 'show'])->name('courseDetails');
