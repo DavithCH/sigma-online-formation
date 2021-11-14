@@ -18,9 +18,9 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
-            $table->double('price')->nullable();
+            $table->decimal('price')->nullable();
             $table->integer('rate')->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

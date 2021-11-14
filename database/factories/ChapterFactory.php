@@ -24,8 +24,9 @@ class ChapterFactory extends Factory
         return [
             "title"=> $this->faker->sentence(6, true),
             "duration" => $this->faker->time(),
-            "content" => $this->faker->paragraphs(10, true),
-            "courses_id" => $this->faker->numberBetween(1,5)
+            "content" => $this->faker->paragraphs(50, true),
+            "courses_id" => $this->faker->numberBetween(1,5),
+            "number" => $this->faker->numberBetween(1,10)
         ];
     }
 }
