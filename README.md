@@ -8,6 +8,8 @@
 
     To become a teacher, you need register your account and wait for admin to validate your account.
 
+    After finish registration, there will be an email automatically send to admin.
+
     Once your account is validated by admin, you will see all functionalities to create, update and delete your courses.
 
 ## MCD

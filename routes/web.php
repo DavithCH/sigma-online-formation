@@ -34,8 +34,12 @@ Route::put('/chapters/edit/{id}/{course}',[ChapterController::class, 'update'])-
 Route::get('/users/{id}',[UserController::class, 'show'])->name('userProfile')->middleware('auth');
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('editUser')->middleware('auth');
 Route::put('/users/update/{id}',[UserController::class, 'update'])->name('updateUser')->middleware('auth');
+Route::get('/users/edit/{id}/password',[UserController::class, 'updatePasswordForm'])->name('editPassword')->middleware('auth');
+Route::put('/users/update/{id}/password',[UserController::class, 'updatePassword'])->name('updatePassword')->middleware('auth');
 
 Route::get('/contact',[ContactController::class, 'contact'])->name('contact');
 Route::post('/contact',[ContactController::class, 'send'])->name('sendMail');
+
+
 
 require __DIR__.'/auth.php';
