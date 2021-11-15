@@ -27,7 +27,7 @@
 
 > -   run command `npm install` to install all nessesary dependencies such as tailwind css library
 
-> -   on app/Providers/AppServiceProvider.php : inside the `boot` function, select code and uncomment it before running the next command and enable it back after finish migration
+> -   on app/Providers/AppServiceProvider.php : inside the `boot` function, select code and comment it before running the next command and enable it back after finish migration
 
 > -   run command `php artisan migrate:fresh --seed` to inject migrate all seed to database
 
