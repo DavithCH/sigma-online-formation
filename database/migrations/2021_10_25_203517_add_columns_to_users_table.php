@@ -17,6 +17,7 @@ class AddColumnsToUsersTable extends Migration
             $table->dropColumn('name');
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('image')->nullable();
             $table->string('role');
         });
     }
@@ -32,6 +33,7 @@ class AddColumnsToUsersTable extends Migration
             $table->dropColumn('firstname');
             $table->dropColumn('lastname');
             $table->dropColumn('role');
+            $table->dropColumn('image');
         });
     }
 }

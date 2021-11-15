@@ -1,6 +1,16 @@
 @extends('layouts.layout')
 
 @section('content')
+
+    @if (Auth::user())
+        @if (Auth::user()->role == 'ADMIN'||Auth::user()->role == 'USER')
+        <div class="mt-3">
+            <a class="btn btn-primary" href="{{route('addCourse')}}">Add new course</a>
+        </div>
+        @endif
+
+    @endif
+
     @if(count($courses) > 0)
     <div class="flex flex-col justify-center item-center mt-5 text-xl">
         @foreach($courses as $course)

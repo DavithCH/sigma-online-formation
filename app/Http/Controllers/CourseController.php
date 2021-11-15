@@ -25,13 +25,14 @@ class CourseController extends Controller
 
     public function add(){
         $categories = Category::all();
-        return view('courses.add', compact('categories'));
+        return view('courses.add', compact(['categories']));
     }
 
     public function store(CourseStoreRequest $request) {
         $params = $request->validated();
         $file = Storage::put('public/images', $params['image']);
         $params['image'] = substr($file, 7);
+        $params['user_id'] = auth()->user()->id;
         $course = Course::create($params);
 
 

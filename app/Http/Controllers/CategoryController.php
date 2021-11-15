@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+
     public function index(){
         $categories = Category::all();
         echo "<script>setTimeout(function(){ window.location.href = 'http://127.0.0.1:8000/courses/list';500 });</script>";

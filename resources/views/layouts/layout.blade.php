@@ -22,8 +22,25 @@
                         @endforeach
                     </div>
                 </li>
-                <li class="cursor-pointer">Contact</li>
-                <li class="mr-2 cursor-pointer">Account</li>
+                <li class="cursor-pointer"><a href="{{route('contact')}}">Contact</a></li>
+                @if (Auth::check())
+                <li class="mr-2 cursor-pointer">
+                    <div id='user-menu'>{{Auth::user()->firstname}}</div>
+                    <div id="user-drop-element" class="flex flex-col absolute bg-gray-200 p-4 hidden">
+                        <div class="my-2 cursor-pointer hover:bg-gray-400">
+                            <a href="{{route('userProfile', Auth::user()->id)}}">Profile</a>
+                        </div>
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                            <button class="my-2 cursor-pointer hover:bg-gray-400 uppercase">Sign out</button>
+                        </form>
+
+                    </div>
+                </li>
+                @else
+                <li class="mr-2 cursor-pointer"><a href="{{route('login')}}">Sign in</a></li>
+                @endif
+
             </ul>
         </nav>
     </header>
@@ -33,9 +50,15 @@
             let categoryElement = document.querySelector('#category-element');
             categoryElement.classList.toggle("hidden");
         })
+
+        let userMenu = document.querySelector('#user-menu');
+        userMenu.addEventListener('click', function(){
+            let userDropElement = document.querySelector('#user-drop-element');
+            userDropElement.classList.toggle("hidden");
+        })
     </script>
     @yield('content')
-    @yield('script')
+        @yield('script')
 
 </body>
 </html>

@@ -3,14 +3,21 @@
 @section('content')
 
 <div class="flex flex-col justify-center item-center mt-5 text-xl">
-    <div class="flex justify-end">
-        <form action="{{route('deleteCourse', $course->id)}}" method="post">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">DELETE</button>
-        </form>
-        <a href="{{route('editCourse', $course->id)}}" class="btn btn-warning">EDIT</a>
-    </div>
+    @if (Auth::user())
+        @if (Auth::user()->role == 'ADMIN' || (Auth::user()->id == $course->user_id && Auth::user()->role =='USER'))
+        <div class="flex justify-end">
+
+            <form action="{{route('deleteCourse', $course->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">DELETE</button>
+            </form>
+            <a href="{{route('editCourse', $course->id)}}" class="btn btn-warning">EDIT</a>
+        </div>
+        @endif
+
+    @endif
+
         <div class="mb-4 bg-gray-100 flex flex-col p-2 justify-center items-center">
             <div class="w-11/12">
                 <div class="flex justify-between">
@@ -47,21 +54,33 @@
                             {{$chapter->content}}
                         </details>
                     </li>
-                    <div class="text-sm flex">
-                        <form action="{{route('deleteChapter', $chapter->id)}}" method="post" class="mx-1">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">delete</button>
-                        </form>
+                    @if (Auth::user())
+                        @if (Auth::user()->role == 'ADMIN' || (Auth::user()->id == $course->user_id && Auth::user()->role =='USER'))
+                        <div class="text-sm flex">
+                            <form action="{{route('deleteChapter', $chapter->id)}}" method="post" class="mx-1">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">delete</button>
+                            </form>
 
-                        <a href={{route('editChapter', [$chapter->id, $course->id])}} class="btn btn-warning">edit</a>
-                    </div>
+                            <a href={{route('editChapter', [$chapter->id, $course->id])}} class="btn btn-warning">edit</a>
+                        </div>
+                        @endif
+                    @endif
+
+
                 </div>
 
                 @endforeach
                 </ul>
             </div>
-            <div class="mt-3"><a class="btn btn-primary" href="{{route('addChapter', $course->id)}}">add chapter</a></div>
+            @if(Auth::user())
+                @if(Auth::user()->role == 'ADMIN' || (Auth::user()->id == $course->user_id && Auth::user()->role =='USER'))
+                <div class="mt-3"><a class="btn btn-primary" href="{{route('addChapter', $course->id)}}">add chapter</a></div>
+                @endif
+            @endif
+
+
         </div>
 
 </div>
