@@ -9,6 +9,8 @@
 > -   Create .env file on root directory and copy all content from .env.example file to it
 > -   Create your database and than connect your laravel app by changing the requirements in .env
 
+> -   Configure your mail to able to work with mailing systems
+
 > -   run `composer update` to generate all dependencies
 
 > -   run command `npm install` to install all nessesary dependencies such as tailwind css library
