@@ -1,5 +1,15 @@
 # Sigma Online Formation
 
+## Context
+
+    Sigma is a online plateform which allows user to learn from other users on difference cateogries.
+
+    Everyone can join sigma. You can be a normal student or a teacher.
+
+    To become a teacher, you need register your account and wait for admin to validate your account.
+
+    Once your account is validated by admin, you will see all functionalities to create, update and delete your courses.
+
 ## MCD
 
 ![alt text](https://github.com/DavithCH/sigma-online-formation/blob/main/public/MCD.PNG?raw=true)
