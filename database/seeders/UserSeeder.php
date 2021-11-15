@@ -17,16 +17,8 @@ class UserSeeder extends Seeder
         User::factory()->count(5)->create();
 
         $secret_admin = 'admin';
-        $secret_visiter = 'visiter123456';
         $secret_user = "user123456";
 
-        User::create([
-            'firstname' => 'John',
-            'lastname' => 'Doe',
-            'email' => 'john@test.com',
-            'password' => bcrypt($secret_visiter),
-            'role' => 'VISITER',
-        ]);
 
         User::create([
             'firstname' => 'davith',

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 
 class RegisteredUserController extends Controller
 {
@@ -33,22 +35,32 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+        $params =  $request->validate([
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'firstname' => $params['firstname'],
+            'lastname' => $params['lastname'],
+            'email' => $params['email'],
+            'password' => Hash::make($params['password'],),
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        Mail::to('admin@admin.com')
+            ->send(new ContactMail([
+                'name' => $params['firstname'],
+                'email' => $params['email'],
+                'subject' => 'Request to be a teacher',
+                'message' => 'Hi I just created my account, please grant me a permission to become a teacher here. Thanks you',
+            ]));
+
+        return redirect()->route('login');
     }
 }

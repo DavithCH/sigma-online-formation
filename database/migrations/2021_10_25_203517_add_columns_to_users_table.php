@@ -18,7 +18,7 @@ class AddColumnsToUsersTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('image')->nullable();
-            $table->string('role');
+            $table->string('role')->nullable();
         });
     }
 

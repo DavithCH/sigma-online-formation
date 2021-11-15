@@ -37,4 +37,5 @@ Route::put('/users/update/{id}',[UserController::class, 'update'])->name('update
 
 Route::get('/contact',[ContactController::class, 'contact'])->name('contact');
 Route::post('/contact',[ContactController::class, 'send'])->name('sendMail');
+
 require __DIR__.'/auth.php';
