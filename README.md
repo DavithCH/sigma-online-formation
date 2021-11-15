@@ -31,4 +31,6 @@
 
 > -   run command `php artisan migrate:fresh --seed` to inject migrate all seed to database
 
+> -   run `php artisan storage:link` to save image on storage and use it
+
 > -   run `php artisan serve` to start the servers
